@@ -7,9 +7,12 @@ use Illuminate\Database\Seeder;
 
 // Models
 use App\Models\Project;
+use App\Models\Type;
 
-// Helpers per slug
+// Helpers 
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Schema;
+
 //importazione carbon
 use Carbon\Carbon;
 class ProjectSeeder extends Seeder
@@ -19,16 +22,20 @@ class ProjectSeeder extends Seeder
      */
     public function run(): void
     {
+        Schema::disableForeignKeyConstraints();
         Project::truncate();
-        for ($i = 0; $i < 10; $i++) {
+        Schema::enableForeignKeyConstraints();
 
+        for ($i = 0; $i < 10; $i++) {
+            //estraggo un type a caso
+            $rndType = Type::inRandomOrder()->first();
             $name = fake()->sentence();
             $slug = Str::slug($name);
             $project = Project::create([
                 'name' => $name,
                 'slug' => $slug,
                 'description' => fake()->paragraph(),
-                'technologies'=> fake()->word(),
+                'type'=> $rndType->id,
                 'start_date'=>Carbon::now(),
                 'last_update_date'=>Carbon::now(),
                 'total_hours'=> fake()->randomFloat(1,0.5,100)
