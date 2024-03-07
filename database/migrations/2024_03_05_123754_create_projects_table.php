@@ -17,11 +17,15 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->text('thumb')->nullable();
             $table->text('description')->nullable();
-            $table->string('technologies');
+            $table->unsignedBigInteger('type_id')->nullable();
             $table->date('start_date');
             $table->date('last_update_date')->nullable();
             $table->unsignedDecimal('total_hours',4,1)->nullable();
             $table->timestamps();
+
+            $table->foreign('type_id')
+                    ->references('id')
+                    ->on('type');
         });
     }
 
