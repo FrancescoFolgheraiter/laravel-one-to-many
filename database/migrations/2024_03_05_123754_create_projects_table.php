@@ -22,10 +22,6 @@ return new class extends Migration
             $table->date('last_update_date')->nullable();
             $table->unsignedDecimal('total_hours',4,1)->nullable();
             $table->timestamps();
-
-            $table->foreign('type_id')
-                    ->references('id')
-                    ->on('type');
         });
     }
 
