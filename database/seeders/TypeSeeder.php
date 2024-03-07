@@ -36,7 +36,7 @@ class TypeSeeder extends Seeder
 
         foreach ($allCategories as $singleCategory) {
             $category = type::create([
-                'title' => $singleCategory
+                'name' => $singleCategory
             ]);
         }
     }

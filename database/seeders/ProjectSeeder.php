@@ -22,6 +22,7 @@ class ProjectSeeder extends Seeder
      */
     public function run(): void
     {
+        //primo modo per eseguire in modo sicuro il truncate
         Schema::disableForeignKeyConstraints();
         Project::truncate();
         Schema::enableForeignKeyConstraints();
@@ -35,7 +36,7 @@ class ProjectSeeder extends Seeder
                 'name' => $name,
                 'slug' => $slug,
                 'description' => fake()->paragraph(),
-                'type'=> $rndType->id,
+                'type_id'=> $rndType->id,
                 'start_date'=>Carbon::now(),
                 'last_update_date'=>Carbon::now(),
                 'total_hours'=> fake()->randomFloat(1,0.5,100)
