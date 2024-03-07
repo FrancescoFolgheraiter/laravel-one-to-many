@@ -14,7 +14,7 @@ class Project extends Model
         'slug',
         'thumb',
         'description',
-        'technologies',
+        'type_id',
         'start_date',
         'last_update_date',
         'total_hours'
