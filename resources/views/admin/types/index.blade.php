@@ -19,7 +19,7 @@
                             <tr>
                                 <th scope="col">Nome</th>
                                 <th scope="col">Versione</th>
-                                <th colspan="3" class="text-center"scope="col">Azioni</th>
+                                <th class="text-end"scope="col" class="text-end">Azioni</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -33,17 +33,13 @@
                                     -
                                     @endif
                                 </td>
-                                <td>
+                                <td class="d-flex justify-content-end ">
                                     <a href="{{ route('admin.types.show', ['type' => $type->id]) }}" class="btn btn-xs btn-primary me-2">
                                         Vedi
                                     </a>
-                                </td>
-                                <td>
                                     <a href="{{ route('admin.types.edit', ['type' => $type->id]) }}" class="btn btn-warning me-2">
                                         Modifica
                                     </a>
-                                </td>
-                                <td>
                                     <form onsubmit="return confirm('Sei sicuro di voler eliminare questa voce?');"  action="{{ route('admin.types.destroy', ['type' => $type->id]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
