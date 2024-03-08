@@ -32,9 +32,13 @@
                             <tr>
                                 <th scope="row">{{ $project->name }}</th>
                                 <td>
+                                    @if (!($project->type==null))
                                     <a href="{{ route('admin.types.show', ['type' => $project->type->id])  }}">
                                         {{ $project->type->name}}
                                     </a>
+                                    @else 
+                                    -
+                                    @endif
                                 </td>
                                 <td>{{ Carbon::createFromFormat('Y-m-d', $project->start_date)->format('d-m-Y')}}</td>
                                 <td>
@@ -60,6 +64,11 @@
                                             <button type="submit" class="btn btn-danger">
                                                 Elimina
                                             </button>
+                                        @error('name')
+                                            <div class="alert alert-danger">
+                                                    {{ $message }}
+                                            </div>
+                                        @enderror
                                     </form>
                                 </td>
                             </tr>
