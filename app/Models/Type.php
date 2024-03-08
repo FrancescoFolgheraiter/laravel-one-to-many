@@ -13,4 +13,10 @@ class Type extends Model
         'version',
         'description'
     ];
+    
+    //Relationships
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
+    }
 }

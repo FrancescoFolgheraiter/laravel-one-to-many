@@ -19,4 +19,9 @@ class Project extends Model
         'last_update_date',
         'total_hours'
     ];
+    //Relationships
+    public function type()
+    {
+        return $this->belongsTo(Type::class);
+    }
 }
