@@ -4,6 +4,9 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+// Helpers
+use Illuminate\Support\Facades\Auth;
+
 class StoreProjectRequest extends FormRequest
 {
     /**
@@ -11,7 +14,7 @@ class StoreProjectRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        return Auth::check();
     }
 
     /**
@@ -25,7 +28,7 @@ class StoreProjectRequest extends FormRequest
             'name' => 'required|max:255',
             'thumb' => 'nullable|url',
             'description' => 'nullable|max:5000',
-            'technologies' => 'required|string|max:255',
+            'type_id' => 'required|exists:types,id',
             'start_date' => 'required|date',
             'last_update_date' => 'nullable|date',
             'total_hours' => 'nullable|numeric|max:999',
@@ -39,12 +42,12 @@ class StoreProjectRequest extends FormRequest
             'name.max' => 'Il campo nome non può superare i 255 caratteri.',
             'thumb.url' => 'Il campo thumb deve essere un URL valido.',
             'description.max' => 'Il campo descrizione non può superare i 5000 caratteri.',
-            'technologies.required' => 'Il campo tecnologie è obbligatorio.',
-            'technologies.max' => 'Il campo tecnologie non può superare i 255 caratteri.',
+            'type_id.required' => 'Il campo tipo è obbligatorio.',
+            'type_id.exists' => 'Il tipo selezionato non è valido.',
             'start_date.required' => 'Il campo data di inizio è obbligatorio.',
-            'start_date.date' => 'Il campo data di inizio deve essere una data valida.',
-            'last_update_date.date' => 'Il campo data ultimo aggiornamento deve essere una data valida.',
-            'total_hours.numeric' => 'Il campo ore totali deve essere un numero.',
+            'start_date.date' => 'Il campo data di inizio non è una data valida.',
+            'last_update_date.date' => 'Il campo data di ultimo aggiornamento non è una data valida.',
+            'total_hours.numeric' => 'Il campo ore totali deve essere un valore numerico.',
             'total_hours.max' => 'Il campo ore totali non può superare 999.',
         ];
     }

@@ -7,8 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 // Models
-//importazione medel project
 use App\Models\Project;
+use App\Models\Type;
 
 //Form request
 use App\Http\Requests\StoreProjectRequest;
@@ -33,7 +33,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        $types = Type::all();
+
+        return view('admin.projects.create', compact('types'));
     }
 
     /**
@@ -41,8 +43,8 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {   
-        $projectData = $request->validate();
-
+        $projectData = $request->validated();
+    
         $slug = Str::slug($projectData['name']);
         $projectData['slug']=$slug;
         $project = Project::create($projectData);
@@ -65,8 +67,10 @@ class ProjectController extends Controller
      */
     public function edit(string $slug)
     {
+        $types = Type::all();
+
         $project = Project::where('slug', $slug)->firstOrFail();
-        return view('admin.projects.edit', compact('project'));
+        return view('admin.projects.edit', compact('project','types'));
     }
 
     /**
@@ -74,7 +78,7 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        $projectData = $request->validate();
+        $projectData = $request->validated();
         $project->update($projectData);
         return redirect()->route('admin.projects.show', ['project' => $project->slug]);
     }

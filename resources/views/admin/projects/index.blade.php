@@ -20,7 +20,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">Nome</th>
-                                <th scope="col">Tecnologie utilizzate</th>
+                                <th scope="col">Tipo di progetto</th>
                                 <th scope="col">Data inizio</th>
                                 <th scope="col">Ultimo aggiornamento</th>
                                 <th scope="col">Totale ore</th>
@@ -31,7 +31,7 @@
                             @foreach ($projects as $project)
                             <tr>
                                 <th scope="row">{{ $project->name }}</th>
-                                <td>{{ $project->type_id}}</td>
+                                <td>{{ $project->type->name}}</td>
                                 <td>{{ Carbon::createFromFormat('Y-m-d', $project->start_date)->format('d-m-Y')}}</td>
                                 <td>
                                     @if (!($project->last_update_date==null))

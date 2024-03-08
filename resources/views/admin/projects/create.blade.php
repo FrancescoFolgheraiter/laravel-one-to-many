@@ -41,14 +41,18 @@
                            @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="technologies" class="form-label">Tecnologie utilizzate <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control  @error('technologies') is-invalid @enderror" id="technologies" name="technologies" placeholder="Inserisci le tecnologie..." maxlength="255" required value="{{ old('technologies') }}">
-                            @error('technologies')
-                                 <div class="alert alert-danger">
-                                     {{ $message }}
-                                 </div>
-                            @enderror
-                         </div>
+                            <label for="type_id" class="form-label">Tipo di progetto<span class="text-danger">*</span></label>
+                            <select name="type_id" id="type_id" class="form-select" required>
+                                <option value="" {{ old('type_id') == null ? 'selected' : '' }}>
+                                    Seleziona una categoria...
+                                </option>
+                                @foreach ($types as $type)
+                                    <option value="{{ $type->id }}" {{ old('type_id') == $type->id ? 'selected' : '' }}>
+                                        {{ $type->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>            
                         <div class="mb-3">
                            <label for="start_date" class="form-label">Data inizio progetto <span class="text-danger">*</span></label>
                            <input type="date" class="form-control" id="start_date" name="start_date"  required value="{{ old('start_date') }}">
@@ -78,7 +82,7 @@
                          </div>
                         <div>
                            <button type="submit" class="btn btn-success w-100">
-                                 + Aggiungi
+                                Aggiungi
                            </button>
                         </div>
                       </form>
