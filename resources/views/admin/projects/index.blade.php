@@ -30,7 +30,7 @@
                         <tbody>
                             @foreach ($projects as $project)
                             <tr>
-                                <th scope="row">{{ $project->name }}</th>
+                                <th scope="row" class="w-25 ">{{ $project->name }}</th>
                                 <td>
                                     @if (!($project->type==null))
                                     <a href="{{ route('admin.types.show', ['type' => $project->type->id])  }}">
