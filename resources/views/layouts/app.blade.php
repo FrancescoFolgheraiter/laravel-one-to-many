@@ -24,13 +24,16 @@
                                 <a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.projects.index') }}">Progetti</a>
+                                <a class="nav-link" href="{{ route('admin.projects.index') }}">|Progetti</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.projects.create') }}">Aggiungi un progetto</a>
+                                <a class="nav-link" href="{{ route('admin.projects.create') }}">Aggiungi un progetto |</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.types.index') }}">Lista tipologia</a>
+                                <a class="nav-link" href="{{ route('admin.types.index') }}">|Lista tipologia</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.types.create') }}">Aggiungi un tipo|</a>
                             </li>
                         </ul>
                         <form method="POST" action="{{ route('logout') }}">

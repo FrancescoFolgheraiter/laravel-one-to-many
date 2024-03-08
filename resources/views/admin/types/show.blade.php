@@ -23,7 +23,7 @@
                         @if (!($type->description==null))
                             {{ $type->description }}
                         @else 
-                        -
+                            Descrizione: -
                         @endif
                     </div>
                     

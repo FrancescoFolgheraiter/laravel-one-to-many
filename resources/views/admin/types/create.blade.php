@@ -11,7 +11,7 @@
                         Aggiungi tipo
                     </h1>
                     <br>
-                    <form action="{{ route('admin.projects.store') }}" method="POST">
+                    <form action="{{ route('admin.types.store') }}" method="POST">
                         @csrf
                         <div class="mb-3">
                            <label for="name" class="form-label">Nome del tipo <span class="text-danger">*</span></label>
