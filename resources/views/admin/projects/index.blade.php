@@ -31,7 +31,11 @@
                             @foreach ($projects as $project)
                             <tr>
                                 <th scope="row">{{ $project->name }}</th>
-                                <td>{{ $project->type->name}}</td>
+                                <td>
+                                    <a href="{{ route('admin.types.show', ['type' => $project->type->id])  }}">
+                                        {{ $project->type->name}}
+                                    </a>
+                                </td>
                                 <td>{{ Carbon::createFromFormat('Y-m-d', $project->start_date)->format('d-m-Y')}}</td>
                                 <td>
                                     @if (!($project->last_update_date==null))
