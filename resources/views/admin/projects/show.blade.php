@@ -23,17 +23,10 @@
                     <p class="card-text">{{ $project->description}}</p>
                     <div class="d-flex justify-content-between ">
                         <div>
-                            <h5>Tecnologie utilizzate</h5>
-                            <ul>
-                                @php
-                                    $technologies = explode(" ",$project->technologies)
-                                @endphp
-                                @foreach ($technologies  as $technologie)
-                                    <li>
-                                        {{ $technologie }}
-                                    </li>
-                                @endforeach
-                            </ul>
+                            <h5>Tipo di progetto</h5>
+                            <h5>
+                                {{ $project->type->name }}
+                            </h5>
                         </div>
                         <div>
                             <h5>Totale ore di lavoro</h5>
